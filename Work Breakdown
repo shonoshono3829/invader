@@ -14,4 +14,7 @@ Shosuke
 
 ### Invaders
 "Creating invader objects and moving them across the screen, then zig zagging"
-Malcolm
+### Malcolm
+
+Creating Object that zig zags on program start
+Creating a list of objects that zig zag
