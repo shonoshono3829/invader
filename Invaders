@@ -1,1 +1,80 @@
+from tkinter import *
 
+from tkinter import *
+#Creates Starting Window
+# root = Tk()
+# root.wm_title("Space Invaders")
+import tkinter as tk
+
+class BasicGui:
+
+    def __init__(self):
+        self.mainWin = tk.Tk()
+        self.mainWin.wm_title("SPACE INVADERS")
+        #BUTTONS
+        quitButton = tk.Button(self.mainWin, text="Press This to QUIT",
+                           font="Arial 16", command=self.quit)
+        quitButton.grid(row = 4, column = 1, columnspan = 2)
+
+        startButton = tk.Button(self.mainWin, text="PRESS THIS to START",
+                            font="Arial 16", command=self.gameStart)
+        startButton.grid(row=5, column = 1, columnspan = 2)
+
+        #LABELS
+        self.titleLabel = tk.Label(self.mainWin, text="WELCOME TO SPACE INVADERS!",
+                              font="Arial 16 bold", relief=tk.GROOVE,
+                              justify=tk.CENTER)
+        self.titleLabel.grid(row=0, column=1, columnspan=3)
+
+        self.Spaceship.bind("<a>", self.moveCallback)
+        self.Spaceship.bind("<d>", self.moveCallback)
+        self.Spaceship.bind("<Left>", self.moveCallback)
+        self.Spaceship.bind("<Right>", self.moveCallback)
+
+    def run(self):
+        self.mainWin.mainloop()
+
+    def quit(self):
+        """This is a callback method attached to the quit button.
+        It destroys the main window, which ends the program"""
+        self.mainWin.destroy()
+
+    def gameStart(self):
+        global canvas
+        root = Tk()
+        # self.canvasWidth = 600
+        # self.canvasHeight = 600
+        self.canvas = Canvas(root, width= 640, height= 800)
+        self.canvas.pack()
+        self.canvas['bg'] = 'black'
+        self.canvas["relief"] = tk.SUNKEN
+        self.Spaceship = self.canvas.create_rectangle(30, 30, 10, 10, fill="blue")
+        self.canvas.move(self.Spaceship,320,770)
+
+        self.Spaceship.bind("<a>", self.moveCallback)
+        self.Spaceship.bind("<d>", self.moveCallback)
+        self.Spaceship.bind("<Left>", self.moveCallback)
+        self.Spaceship.bind("<Right>", self.moveCallback)
+
+    def moveCallback(self, event):
+        if event.keysym == "a":
+            self.canvas.move(self.Spaceship, -10, 0)
+        elif event.keysym == "d":
+            self.canvas.move(self.Spaceship, 10, 0)
+        elif event.keysym == "Left":
+            self.canvas.move(self.Spaceship, -10, 0)
+        elif event.keysym == "Right":
+            self.canvas.move(self.Spaceship, 10, 0)
+
+
+
+
+
+
+
+# ------------------ Main program ----------------------
+
+myGui = BasicGui()
+myGui.run()
+
+input('Done')
