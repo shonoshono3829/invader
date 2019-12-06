@@ -33,9 +33,13 @@ class Main:
         self.invader5 = self.canvas.create_rectangle((250, 30), (270, 50), fill="red", tag="5")
         self.invader6 = self.canvas.create_rectangle((310, 30), (330, 50), fill="red", tag="6")
 
+        # List of Alive Invaders
         self.aliveInvaders = [self.invader1, self.invader2, self.invader3, self.invader4, self.invader5, self.invader6]
+        
+        # List of Dead Invaders
         self.deadInvaders = []
 
+        # Test game on function
         self.game = 0
 
         self.invaderMove()
@@ -66,6 +70,7 @@ class Main:
 
 
     # I tried to fix this, the laser gets faster and faster because after function has no after.cancel method. I couldn't fix.
+    # Try to use self.t1
     def laserAuto(self):
         self.canvas.move(self.laser, 0, -10)
         t1 = self.mainWin.after(100, self.laserAuto)
