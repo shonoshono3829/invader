@@ -83,11 +83,11 @@ class Main:
             (x1, y1, x2, y2) = self.canvas.coords(i)
             if x1 <= 640:
                 self.canvas.move(i, 10, 0)
-            index = self.aliveInvaders.index(i)
-            if x1 > 640:
-                self.aliveInvaders[index] = self.canvas.create_rectangle((10, (y1 + 100), (30, (y2 + 100))),
-                                                                             fill="red", tag="1")
-            self.canvas.after(150, self.invaderMove)
+            # index = self.aliveInvaders.index(i)
+            # if x1 > 640:
+            #     self.aliveInvaders[index] = self.canvas.create_rectangle((10, (y1 + 100), (30, (y2 + 100))),
+            #                                                                  fill="red", tag="1")
+        self.canvas.after(150, self.invaderMove)
 
     def checkShot(self):
         (x1, y1, x2, y2) = self.canvas.coords(self.laser)   # Causes error when laser is deleted upon shotdown
